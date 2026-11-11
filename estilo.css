@@ -1,0 +1,411 @@
+/* estilo.css */
+:root {
+  --cor-primaria: #1e3a5f;
+  --cor-destaque: #2f6fb0;
+  --cor-texto: #222;
+  --cor-fundo: #f7f9fc;
+  --cor-card: #ffffff;
+  --fonte: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --sombra: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fonte);
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: var(--cor-primaria);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--sombra);
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+header nav a {
+  color: #dfe8f2;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+header nav a:hover {
+  color: #fff;
+}
+
+header nav a.ativo {
+  color: #fff;
+  border-bottom-color: var(--cor-destaque);
+}
+
+/* ===== BUSCA ===== */
+.busca {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.busca input {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: var(--fonte);
+  width: 200px;
+  outline: none;
+  transition: width 0.2s;
+}
+
+.busca input:focus {
+  width: 240px;
+  box-shadow: 0 0 0 2px var(--cor-destaque);
+}
+
+.busca-resultados {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 320px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 50;
+  display: none;
+}
+
+.busca-resultados.aberto {
+  display: block;
+}
+
+.busca-resultados a,
+.busca-resultados .vazio {
+  display: block;
+  padding: 10px 14px;
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #eee;
+}
+
+.busca-resultados a:last-child {
+  border-bottom: none;
+}
+
+.busca-resultados a:hover {
+  background: #eef4fb;
+}
+
+.busca-resultados .titulo {
+  font-weight: 600;
+  color: var(--cor-primaria);
+  display: block;
+}
+
+.busca-resultados .trecho {
+  font-size: 0.82rem;
+  color: #666;
+}
+
+.busca-resultados .vazio {
+  color: #888;
+  text-align: center;
+}
+
+/* ===== CONTEÚDO ===== */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  color: var(--cor-primaria);
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  color: #556;
+  font-size: 1.1rem;
+}
+
+/* ===== CARDS ===== */
+#cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--cor-card);
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: var(--sombra);
+  border-top: 3px solid var(--cor-destaque);
+}
+
+.card h3 {
+  color: var(--cor-primaria);
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 1.2rem;
+  background: var(--cor-primaria);
+  color: #dfe8f2;
+  font-size: 0.85rem;
+}
+
+/* ===== BOTÃO WHATSAPP FLUTUANTE ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.aberto {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-caixa {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+}
+
+.modal-fechar:hover {
+  color: #333;
+}
+
+.modal-caixa h2 {
+  color: var(--cor-primaria);
+  margin-bottom: 1rem;
+}
+
+/* ===== AVISO DE COOKIES ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--cor-primaria);
+  color: #fff;
+  padding: 1.2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  z-index: 300;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.cookie-banner.visivel {
+  transform: translateY(0);
+}
+
+.cookie-banner p {
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 200px;
+  margin: 0;
+}
+
+.cookie-banner p a {
+  color: #a8d4ff;
+  text-decoration: underline;
+}
+
+.cookie-botoes {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.cookie-botoes button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: var(--fonte);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cookie-botoes button:hover {
+  opacity: 0.9;
+}
+
+.btn-aceitar {
+  background: #25d366;
+  color: #fff;
+}
+
+.btn-recusar {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff !important;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  header nav {
+    justify-content: center;
+  }
+
+  .busca input,
+  .busca input:focus {
+    width: 100%;
+    min-width: 180px;
+  }
+
+  .busca {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .busca-resultados {
+    width: 100%;
+    right: auto;
+    left: 0;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .cookie-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+}
